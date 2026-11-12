@@ -1,0 +1,30 @@
+label {
+  display: block;
+  margin-bottom: 20px;
+
+  span {
+    display: inline-block;
+    width: 100px;
+  }
+
+  input[type="text"] {
+    width: 400px;
+  }
+}
+
+button {
+  float: right;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+}
+
+div.radios span {
+  width: 100px;
+}
+
+label:has(input[type="radio"]) {
+  margin-bottom: 0;
+}
