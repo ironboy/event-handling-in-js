@@ -51,7 +51,7 @@ form.innerHTML = `
         <input type="checkbox" name="favoriteBand" value="Rolling Stones"> Rolling Stones
       </label>
       <label>
-        <input type="checkbox" name="favovriteBand" value="Pink Floyd"> PinkFloyd
+        <input type="checkbox" name="favoriteBand" value="Pink Floyd"> Pink Floyd
       </label>
     </div>
   </div>

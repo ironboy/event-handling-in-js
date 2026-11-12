@@ -10,13 +10,24 @@ export function formReader(functionToRunAfterReadingForm) {
     event.preventDefault();
     // formValues an object we will add all the user input values to
     const formValues = {};
-    // read input values from a form
-    const form = document.forms.answer;
+    // read input values from the form that was actually submitted
+    // (event.target), so formReader works for any form - not just one
+    const form = event.target;
     for (let { type, name, value, checked } of form.elements) {
       if (type === 'submit') { continue; }
       // handle radiobuttons only consider the checked one
       if ((type === "radio" || type === "checkbox") && !checked) { continue; }
-      formValues[name] = value;
+      // if the same name appears more than once (e.g. several checkboxes),
+      // collect the values in an array instead of overwriting
+      if (name in formValues) {
+        // turn it into an array the second time we see the name
+        if (!Array.isArray(formValues[name])) {
+          formValues[name] = [formValues[name]];
+        }
+        formValues[name].push(value);
+      } else {
+        formValues[name] = value;
+      }
     }
     functionToRunAfterReadingForm(formValues);
   };
